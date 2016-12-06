@@ -52,3 +52,24 @@ body {
   color: #fff;
   padding: 0 65px;
 }
+
+/*** Header ***/
+
+header {
+  background-color: #404041;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  padding: 15px 0;
+}
+
+.title-bold {
+  color: #ED458B;
+}
+
+.title-thin {
+  color: #E6E7E8;
+  font-weight: 300;
+}
