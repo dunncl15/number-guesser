@@ -17,3 +17,38 @@ body {
   margin: 0 auto;
   background-color: #fff;
 }
+
+.btn,
+.btn-disabled,
+.btn:hover {
+  color: #fff;
+  border-radius: 20px;
+  border-style: none;
+  padding: 6px 0;
+  display: block;
+  margin: 5px;
+  font-size: 1.1em;
+  font-weight: 300;
+  width: 80%;
+}
+
+.btn {
+  background-color: #929497;
+}
+
+.btn-disabled {
+  background-color: #D0D2D4;
+}
+
+.btn:hover {
+  background-color: #EB008B;
+}
+
+.btn a,
+.btn a:hover,
+.btn-disabled a,
+.btn-disabled a:hover {
+  text-decoration: none;
+  color: #fff;
+  padding: 0 65px;
+}
