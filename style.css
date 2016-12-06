@@ -1,0 +1,19 @@
+
+* {
+  box-sizing: border-box;
+}
+
+/****** Base Styles ******/
+
+body {
+  margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
+  background-color: lightgrey;
+}
+
+#wrapper {
+  min-width: 300px;
+  max-width: 768px;
+  margin: 0 auto;
+  background-color: #fff;
+}
