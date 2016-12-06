@@ -42,6 +42,11 @@ body {
 
 .btn:hover {
   background-color: #EB008B;
+  cursor: pointer;
+}
+
+.btn:focus {
+  border-style: none;
 }
 
 .btn a,
@@ -88,4 +93,20 @@ input {
   padding: 5px 0;
   margin-bottom: 5px;
   border: 1px solid #929497;
+}
+
+.last-guess{
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.result {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.show-guess {
+  font-size: 8em;
+  font-weight: 300;
+  color: #ED458B;
+  margin: 0;
 }
