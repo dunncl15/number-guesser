@@ -12,17 +12,13 @@
         <h1><span class="title-bold">Number</span> <span class="title-thin">Guesser</span></h1>
       </header>
       <section class="main-content">
-        <form>
-          <input id="user-guess" type="text" placeholder=" Enter your guess">
-          <center>
-            <button id="guess-btn" class="btn" type="button" >Guess</button>
-            <button id="clear-button" class="btn" type="button">Clear</button>
-            <p class="last-guess"></p>
-            <p class="show-guess"></p>
-            <p class="result"></p>
-            <button class="btn" type="button">Reset</button>
-          </center>
-        </form>
+        <input id="user-guess" type="text" placeholder=" Enter your guess">
+        <button id="guess-btn" class="btn" disabled>Guess</button>
+        <button id="clear-btn" class="btn" disabled>Clear</button>
+        <p class="last-guess"></p>
+        <p class="show-guess"></p>
+        <p class="result"></p>
+        <button id="reset-btn" class="btn" disabled>Reset</button>
       </section>
     </div>
     <script src="scripts.js" type="text/javascript"></script>
