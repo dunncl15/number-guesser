@@ -77,6 +77,7 @@ input {
   margin-bottom: 5px;
   border: 1px solid #D0D2D4;
   border-radius: 3px;
+  color: #929497
 }
 
 input[placeholder] {
