@@ -1,61 +1,81 @@
-// Generate Random Number
-var randomNum = getRandomNum();
+// Global Variables
+var secretNum = getRandomNum();
+var guessInput = document.getElementById('user-guess');
+// var userGuess = changeToNum();
+var guessButton = document.getElementById('guess-btn');
+var clearButton = document.getElementById('clear-btn');
+var resetButton = document.getElementById('reset-btn');
 
-function getRandomNum() {
-  return Math.floor((Math.random() * 100) + 1);
-}
-
-var secretNum = parseInt(randomNum);
 
 // Guess Button Click Event
-var guessInput = document.getElementById('user-guess');
-var guessButton = document.getElementById('guess-btn');
-
 guessButton.addEventListener('click', function(){
-  if (guessInput.value > 100 || guessInput.value < 1) { alert("Your guess must be between 1 and 100!");
-} else if (isNaN(guessInput.value) === true) {
+  if (changeToNum() > 100 || changeToNum() < 1) { alert("Your guess must be between 1 and 100!");
+} else if (isNaN(changeToNum()) === true) {
   alert("Enter a valid number.");
 } else {
-  var userInput = guessInput.value;
   document.querySelector('.last-guess').innerText = "Your last guess was"
-  document.querySelector('.show-guess').innerText = userInput;
+  document.querySelector('.show-guess').innerText = changeToNum();
 }
-  console.log(userInput, secretNum);
+  console.log(changeToNum(), secretNum);
 
-  if (userInput < secretNum) {
+  if (changeToNum() < secretNum) {
     document.querySelector('.result').innerText = "That is too low";
-  } else if (userInput > secretNum) {
+  } else if (changeToNum() > secretNum) {
     document.querySelector('.result').innerText = "That is too high";
-  } else if (userInput == secretNum){
+  } else if (changeToNum() === secretNum){
     document.querySelector('.result').innerText = "Boom!".toUpperCase();
   }
 });
 
 //Clear Button Click Event
-var clearButton = document.getElementById('clear-btn');
-
 clearButton.addEventListener('click', function(){
   document.getElementById('user-guess').value = "";
 });
 
 //Reset Button Click Event
-var resetButton = document.getElementById('reset-btn');
-
 resetButton.addEventListener('click', function () {
-  randomNum = getRandomNum();
-  secretNum = randomNum
+  getRandomNum();
   document.getElementById('user-guess').value = "";
   document.querySelector('.last-guess').innerText = "";
   document.querySelector('.show-guess').innerText = "";
   document.querySelector('.result').innerText = "";
+  disableButtons();
+})
+
+//Input Event
+guessInput.addEventListener('input', function() {
+  if (guessInput.value === "") {
+    disableButtons();
+  } else {
+    enableButtons();
+  }
+})
+
+//Disable buttons
+function disableButtons() {
+  var notActive =
   guessButton.disabled = true;
   clearButton.disabled = true;
   resetButton.disabled = true;
-})
+  return notActive;
+}
 
 //Enable buttons
-guessInput.addEventListener('input', function() {
+function enableButtons() {
+  var active =
   guessButton.disabled = false;
   clearButton.disabled = false;
   resetButton.disabled = false;
-})
+  return active;
+}
+
+//Generate Random Number
+function getRandomNum() {
+  return Math.floor((Math.random() * 100) + 1);
+}
+
+//Convert User's Guess to a Number
+ function changeToNum() {
+  var userNum = parseInt(guessInput.value);
+  return userNum;
+}
