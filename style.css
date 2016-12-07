@@ -18,26 +18,17 @@ body {
   background-color: #fff;
 }
 
-.btn,
-.btn-disabled,
-.btn:hover {
+.btn {
   color: #fff;
+  background-color: #929497;
   border-radius: 20px;
   border-style: none;
   padding: 5px 0;
   display: block;
-  margin: 5px;
+  margin: 3% 5%;
   font-size: 1.1em;
   font-weight: 300;
-  width: 80%;
-}
-
-.btn {
-  background-color: #929497;
-}
-
-.btn-disabled {
-  background-color: #D0D2D4;
+  width: 90%;
 }
 
 .btn:hover {
@@ -45,17 +36,8 @@ body {
   cursor: pointer;
 }
 
-.btn:focus {
-  border-style: none;
-}
-
-.btn a,
-.btn a:hover,
-.btn-disabled a,
-.btn-disabled a:hover {
-  text-decoration: none;
-  color: #fff;
-  padding: 0 100px;
+.btn:disabled {
+  background-color: #D0D2D4;
 }
 
 /*** Header ***/
@@ -68,6 +50,7 @@ header {
 h1 {
   margin: 0;
   padding: 15px 0;
+  font-size: 2.5em;
 }
 
 .title-bold {
@@ -89,24 +72,46 @@ h1 {
 }
 
 input {
-  width: 80%;
-  padding: 5px 0;
+  width: 90%;
+  padding: 8px 0;
   margin-bottom: 5px;
-  border: 1px solid #929497;
+  border: 1px solid #D0D2D4;
+  border-radius: 3px;
+}
+
+input[placeholder] {
+  font-size: 1em;
 }
 
 .last-guess{
-  margin-top: 10px;
+  margin-top: 2em;
   margin-bottom: 0;
 }
 .result {
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 2em;
 }
 
 .show-guess {
   font-size: 8em;
   font-weight: 300;
   color: #ED458B;
-  margin: 0;
+  margin: -10px;
+}
+
+
+@media screen and (min-width: 550px) {
+  #guess-btn,
+  #clear-btn {
+    display: inline-block;
+    width: 42%;
+  }
+
+  #guess-btn {
+    margin: 3% 3% 3% 0;
+  }
+
+  #clear-btn {
+    margin: 3% 0 3% 3%;
+  }
 }
