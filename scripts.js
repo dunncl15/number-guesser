@@ -24,8 +24,16 @@ guessButton.addEventListener('click', function(){
     document.querySelector('.result').innerText = "That is too high";
   } else if (changeToNum() === secretNum){
     document.querySelector('.result').innerText = "Boom!".toUpperCase();
+    nextLevel();
   }
 });
+
+//Level 2 function
+function nextLevel() {
+    document.querySelector('.level-2').innerText = "Ready for level 2?";
+    var minMax =     document.querySelector('.min-max-section');
+    minMax.style.display = 'unset';
+}
 
 //Clear Button Click Event
 clearButton.addEventListener('click', function(){
