@@ -1,25 +1,26 @@
 // Global Variables
 var secretNum = getRandomNum();
 var guessInput = document.getElementById('user-guess');
-// var userGuess = changeToNum();
 var guessButton = document.getElementById('guess-btn');
 var clearButton = document.getElementById('clear-btn');
 var resetButton = document.getElementById('reset-btn');
 var enterButton = document.getElementById('enter-btn');
 var minInput = document.getElementById('min');
 var maxInput = document.getElementById('max');
+var minNum = 0;
+var maxNum = 100;
+
+//EVENT LISTENERS
 
 // Guess Button Click Event
 guessButton.addEventListener('click', function(){
-  if (changeToNum() > 100 || changeToNum() < 1) { alert("Your guess must be between 1 and 100!");
+  if (changeToNum() > maxNum || changeToNum() < minNum) { alert("Your guess must be between " + minNum + " and " + maxNum);
 } else if (isNaN(changeToNum()) === true) {
   alert("Enter a valid number.");
 } else {
   document.querySelector('.last-guess').innerText = "Your last guess was"
   document.querySelector('.show-guess').innerText = changeToNum();
 }
-  console.log(changeToNum(), secretNum);
-
   if (changeToNum() < secretNum) {
     document.querySelector('.result').innerText = "That is too low";
   } else if (changeToNum() > secretNum) {
@@ -28,6 +29,7 @@ guessButton.addEventListener('click', function(){
     document.querySelector('.result').innerText = "Boom!".toUpperCase();
     nextLevel();
   }
+  console.log(changeToNum(), secretNum);
 });
 
 //Clear Button Click Event
@@ -54,7 +56,15 @@ guessInput.addEventListener('input', function() {
   }
 })
 
-//Min and Max Input Event 
+//Show Level 2
+function nextLevel() {
+    document.querySelector('.level-2').innerText = "Ready for level 2?";
+    document.querySelector('.level-2-instructions').innerText = "Enter a new min and max, then guess again!"
+    var minMax =     document.querySelector('.min-max-section');
+    minMax.style.display = 'unset';
+}
+
+//Min and Max Input Event
 minInput.addEventListener('input', function() {
   if (minInput.value === "") {
     var activeBtn = enterButton.disabled = true;
@@ -65,13 +75,14 @@ minInput.addEventListener('input', function() {
   }
 })
 
-//Show Level 2
-function nextLevel() {
-    document.querySelector('.level-2').innerText = "Ready for level 2?";
-    document.querySelector('.level-2-instructions').innerText = "Enter a new min and max, then guess again!"
-    var minMax =     document.querySelector('.min-max-section');
-    minMax.style.display = 'unset';
-}
+enterButton.addEventListener('click', function() {
+  customRange();
+  document.querySelector('.new-range').innerText = "Your new range is between " + newMin() + " and " + newMax() + "."
+  document.querySelector('.level-2').innerText = "";
+  document.querySelector('.level-2-instructions').innerText = "";
+})
+
+//FUNCTIONS
 
 //Disable buttons
 function disableButtons() {
@@ -102,20 +113,21 @@ function getRandomNum() {
   return userNum;
 }
 
+//CUSTOM RANGE FUNCTIONS
+
 //Generate New Range
-function customRange(newMin, newMax) {
-  return Math.floor(Math.random() * (newMax() - newMin()) + newMax());
-  console.log(newMin(), newMax());
+function customRange() {
+  secretNum = Math.floor(Math.random() * (newMax() - newMin() + 1) + newMin());
 }
 
 //Convert Min to a Number
 function newMin() {
-  var userMin = parseInt(minInput.value);
-  return userMin;
+  minNum = parseInt(minInput.value);
+  return minNum;
 }
 
 //Convert Max to a Number
 function newMax() {
-  var userMax = parseInt(maxInput.value);
-  return userMax;
+  maxNum = parseInt(maxInput.value);
+  return maxNum;
 }
