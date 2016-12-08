@@ -71,6 +71,10 @@ h1 {
   padding-bottom: 2.5em;
 }
 
+.min-max-section {
+  display: none;
+}
+
 input {
   width: 90%;
   padding: 8px 0;
@@ -100,6 +104,10 @@ input[placeholder] {
   margin: -10px;
 }
 
+#reset-btn {
+  margin-top: 3em;
+}
+
 
 @media screen and (min-width: 550px) {
   #guess-btn,
@@ -115,4 +123,19 @@ input[placeholder] {
   #clear-btn {
     margin: 3% 0 3% 3%;
   }
+
+  #min,
+  #max {
+    display: inline-block;
+    width: 40%;
+  }
+
+  #min {
+    margin-right: 3%;
+  }
+
+  #max {
+    margin-left: 3%;
+  }
+
 }
