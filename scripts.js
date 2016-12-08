@@ -5,7 +5,9 @@ var guessInput = document.getElementById('user-guess');
 var guessButton = document.getElementById('guess-btn');
 var clearButton = document.getElementById('clear-btn');
 var resetButton = document.getElementById('reset-btn');
-
+var enterButton = document.getElementById('enter-btn');
+var minInput = document.getElementById('min');
+var maxInput = document.getElementById('max');
 
 // Guess Button Click Event
 guessButton.addEventListener('click', function(){
@@ -28,13 +30,6 @@ guessButton.addEventListener('click', function(){
   }
 });
 
-//Level 2 function
-function nextLevel() {
-    document.querySelector('.level-2').innerText = "Ready for level 2?";
-    var minMax =     document.querySelector('.min-max-section');
-    minMax.style.display = 'unset';
-}
-
 //Clear Button Click Event
 clearButton.addEventListener('click', function(){
   document.getElementById('user-guess').value = "";
@@ -50,7 +45,7 @@ resetButton.addEventListener('click', function () {
   disableButtons();
 })
 
-//Input Event
+//Initial Guess Field Input Event
 guessInput.addEventListener('input', function() {
   if (guessInput.value === "") {
     disableButtons();
@@ -58,6 +53,25 @@ guessInput.addEventListener('input', function() {
     enableButtons();
   }
 })
+
+//Min and Max Input Event 
+minInput.addEventListener('input', function() {
+  if (minInput.value === "") {
+    var activeBtn = enterButton.disabled = true;
+    return activeBtn;
+  } else {
+    var inactiveBtn = enterButton.disabled = false;
+    return inactiveBtn
+  }
+})
+
+//Show Level 2
+function nextLevel() {
+    document.querySelector('.level-2').innerText = "Ready for level 2?";
+    document.querySelector('.level-2-instructions').innerText = "Enter a new min and max, then guess again!"
+    var minMax =     document.querySelector('.min-max-section');
+    minMax.style.display = 'unset';
+}
 
 //Disable buttons
 function disableButtons() {
@@ -86,4 +100,22 @@ function getRandomNum() {
  function changeToNum() {
   var userNum = parseInt(guessInput.value);
   return userNum;
+}
+
+//Generate New Range
+function customRange(newMin, newMax) {
+  return Math.floor(Math.random() * (newMax() - newMin()) + newMax());
+  console.log(newMin(), newMax());
+}
+
+//Convert Min to a Number
+function newMin() {
+  var userMin = parseInt(minInput.value);
+  return userMin;
+}
+
+//Convert Max to a Number
+function newMax() {
+  var userMax = parseInt(maxInput.value);
+  return userMax;
 }
