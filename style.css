@@ -19,13 +19,13 @@ body {
 }
 
 .btn {
-  color: #fff;
+  display: block;
+  margin: 3% 5%;
+  padding: 5px 0;
   background-color: #929497;
   border-radius: 20px;
   border-style: none;
-  padding: 5px 0;
-  display: block;
-  margin: 3% 5%;
+  color: #fff;
   font-size: 1.1em;
   font-weight: 300;
   width: 90%;
@@ -66,10 +66,10 @@ h1 {
 /*** Main Content ***/
 
 .main-content {
-  text-align: center;
-  max-width: 400px;
   margin: 2em auto;
+  max-width: 400px;
   padding-bottom: 2.5em;
+  text-align: center;
 }
 
 .min-max-section {
@@ -82,8 +82,8 @@ h1 {
 
 input {
   width: 90%;
-  padding: 8px 0;
   margin-bottom: 5px;
+  padding: 8px 0;
   border: 1px solid #D0D2D4;
   border-radius: 3px;
   color: #929497
@@ -102,21 +102,19 @@ input:focus {
 }
 
 .last-guess{
-  margin-top: 2em;
-  margin-bottom: 0;
+  margin: 2em 0 0 0;
   color: #404041;
 }
 .result {
-  margin-top: 0;
-  margin-bottom: 2em;
+  margin: 0 0 2em 0;
   color: #404041;
 }
 
 .show-guess {
+  margin: -10px;
+  color: #ED458B;
   font-size: 10em;
   font-weight: 300;
-  color: #ED458B;
-  margin: -10px;
 }
 
 #reset-btn {
