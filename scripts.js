@@ -7,6 +7,7 @@ var resetButton = document.getElementById('reset-btn');
 var enterButton = document.getElementById('enter-btn');
 var minInput = document.getElementById('min');
 var maxInput = document.getElementById('max');
+var newRangeText = document.querySelector('.new-range');
 var minNum = 1;
 var maxNum = 100;
 
@@ -61,26 +62,26 @@ guessInput.addEventListener('input', function() {
   }
 })
 
-//Min and Max Input Event
+//Min Input Event
 minInput.addEventListener('input', function() {
   if (minInput.value === "") {
     var activeBtn = enterButton.disabled = true;
     return activeBtn;
   } else {
     var inactiveBtn = enterButton.disabled = false;
-    return inactiveBtn
+    return inactiveBtn;
   }
 })
 
 //Enter button event listener
 enterButton.addEventListener('click', function() {
   customRange();
-  document.querySelector('.new-range').innerText = "Your new range is between " + newMin() + " and " + newMax() + "."
-  document.querySelector('.level-2').innerText = "";
   document.querySelector('.level-2-instructions').innerText = "";
   var displayGuess = document.querySelector('.display-guess');
   displayGuess.style.display = 'none';
   guessInput.value = "";
+  var inactiveBtn = guessButton.disabled = true;
+  return inactiveBtn;
 })
 
 //FUNCTIONS
@@ -99,10 +100,14 @@ function userResult() {
 
 //Show Level 2
 function nextLevel() {
-    document.querySelector('.level-2').innerText = "Ready for level 2?";
     document.querySelector('.level-2-instructions').innerText = "Enter a new min and max, then guess again!"
-    var minMax =     document.querySelector('.min-max-section');
+    var minMax = document.querySelector('.min-max-section');
     minMax.style.display = 'unset';
+    if (minMax.style.display === 'unset' && minInput.value !== "") {
+      compRange();
+    } else {
+
+    }
 }
 
 //Disable buttons
@@ -138,11 +143,17 @@ function getRandomNum() {
 
 //Generate New Range
 function compRange() {
-  secretNum = Math.floor(Math.random() * (rangeMax() - rangeMin() + 1) + rangeMin());
+  rangeMax();
+  rangeMin();
+  secretNum = Math.floor(Math.random() * (maxNum - minNum + 1) + minNum);
+  minInput.value = minNum;
+  maxInput.value = maxNum;
+  newRangeText.innerText = "Your new range is between " + minNum + " and " + maxNum + ".";
 }
 
 function customRange() {
   secretNum = Math.floor(Math.random() * (newMax() - newMin() + 1) + newMin());
+  newRangeText.innerText = "Your new range is between " + minNum + " and " + maxNum + ".";
 }
 
 //Convert User Min to a Number
@@ -159,12 +170,12 @@ function newMax() {
 
 //User Min -10
 function rangeMin() {
-  minNum = parseInt(minInput.value) - 10;
+  minNum -= 10;
   return minNum;
 }
 
 //User Max +10
 function rangeMax() {
-  maxNum = parseInt(maxInput.value) + 10;
+  maxNum += 10;
   return maxNum;
 }
