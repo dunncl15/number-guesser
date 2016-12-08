@@ -15,7 +15,8 @@ var maxNum = 100;
 
 // Guess Button Click Event
 guessButton.addEventListener('click', function(){
-  if (userNum() > maxNum || userNum() < minNum) {      alert("Your guess must be between " + minNum + " and " + maxNum);
+  if (userNum() > maxNum || userNum() < minNum) {
+    alert("Your guess must be between " + minNum + " and " + maxNum);
 } else if (isNaN(userNum()) === true) {
     alert("Enter a valid number.");
 } else {
@@ -146,8 +147,8 @@ function compRange() {
   rangeMax();
   rangeMin();
   secretNum = Math.floor(Math.random() * (maxNum - minNum + 1) + minNum);
-  minInput.value = minNum;
-  maxInput.value = maxNum;
+  minNum = minInput.value;
+  maxNum = maxInput.value;
   newRangeText.innerText = "Your new range is between " + minNum + " and " + maxNum + ".";
 }
 
