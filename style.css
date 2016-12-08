@@ -29,6 +29,7 @@ body {
   font-size: 1.1em;
   font-weight: 300;
   width: 90%;
+  outline: none;
 }
 
 .btn:hover {
@@ -88,24 +89,31 @@ input[placeholder] {
   font-size: 1em;
 }
 
+input:focus {
+  outline: 2px solid #ED458B;
+  border-radius: 3px;
+}
+
 .last-guess{
   margin-top: 2em;
   margin-bottom: 0;
+  color: #404041;
 }
 .result {
   margin-top: 0;
   margin-bottom: 2em;
+  color: #404041;
 }
 
 .show-guess {
-  font-size: 8em;
+  font-size: 10em;
   font-weight: 300;
   color: #ED458B;
   margin: -10px;
 }
 
 #reset-btn {
-  margin-top: 3em;
+  margin-top: 2.5em;
 }
 
 
@@ -131,11 +139,11 @@ input[placeholder] {
   }
 
   #min {
-    margin-right: 3%;
+    margin-right: 4%;
   }
 
   #max {
-    margin-left: 3%;
+    margin-left: 4%;
   }
 
 }
