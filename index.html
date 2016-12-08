@@ -5,6 +5,7 @@
     <title>Number Guesser</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=true;">
   </head>
   <body>
     <div id="wrapper">
@@ -22,12 +23,11 @@
           <p class="result"></p>
         </div>
         <div class="min-max-section">
-          <h3 class="level-2"></h3>
-          <p class="level-2-instructions"></p>
-          <input id="min" type="text" placeholder=" Set min">
-          <input id="max" type="text" placeholder=" Set max">
+          <h4 class="level-2-instructions"></h4>
           <p class="new-range"></p>
-          <button id="enter-btn" class="btn" disabled>Enter new range</button>
+          <input id="min" type="text" placeholder=" Set min">
+          <input id="max" type="text" placeholder=" Set max">  
+          <button id="enter-btn" class="btn" disabled>Enter custom range</button>
         </div>
         <button id="reset-btn" class="btn"
         disabled>Reset</button>
