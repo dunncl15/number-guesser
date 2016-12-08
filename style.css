@@ -39,6 +39,7 @@ body {
 
 .btn:disabled {
   background-color: #D0D2D4;
+  cursor: default;
 }
 
 /*** Header ***/
@@ -51,7 +52,7 @@ header {
 h1 {
   margin: 0;
   padding: 15px 0;
-  font-size: 2.5em;
+  font-size: 2.25em;
 }
 
 .title-bold {
@@ -76,6 +77,10 @@ h1 {
   display: none;
 }
 
+.display-guess {
+  display: block;
+}
+
 input {
   width: 90%;
   padding: 8px 0;
@@ -91,7 +96,10 @@ input[placeholder] {
 
 input:focus {
   outline: 2px solid #ED458B;
-  border-radius: 3px;
+}
+
+.initial-range {
+  color: #404041;
 }
 
 .last-guess{
