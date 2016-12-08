@@ -101,14 +101,14 @@ function userResult() {
 
 //Show Level 2
 function nextLevel() {
-    document.querySelector('.level-2-instructions').innerText = "Enter a new min and max, then guess again!"
-    var minMax = document.querySelector('.min-max-section');
-    minMax.style.display = 'unset';
-    if (minMax.style.display === 'unset' && minInput.value !== "") {
-      compRange();
-    } else {
+  document.querySelector('.level-2-instructions').innerText = "Enter a new min and max, then guess again!"
+  var minMax = document.querySelector('.min-max-section');
+  minMax.style.display = 'unset';
+  if (minMax.style.display === 'unset' && minInput.value !== "") {
+    compRange();
+  } else {
 
-    }
+  }
 }
 
 //Disable buttons
