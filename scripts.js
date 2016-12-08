@@ -7,29 +7,27 @@ var resetButton = document.getElementById('reset-btn');
 var enterButton = document.getElementById('enter-btn');
 var minInput = document.getElementById('min');
 var maxInput = document.getElementById('max');
-var minNum = 0;
+var minNum = 1;
 var maxNum = 100;
 
 //EVENT LISTENERS
 
 // Guess Button Click Event
 guessButton.addEventListener('click', function(){
-  if (changeToNum() > maxNum || changeToNum() < minNum) { alert("Your guess must be between " + minNum + " and " + maxNum);
-} else if (isNaN(changeToNum()) === true) {
-  alert("Enter a valid number.");
+  if (userNum() > maxNum || userNum() < minNum) {      alert("Your guess must be between " + minNum + " and " + maxNum);
+} else if (isNaN(userNum()) === true) {
+    alert("Enter a valid number.");
 } else {
+  var displayGuess = document.querySelector('.display-guess');
+  displayGuess.style.display = 'block';
+  var initialRange = document.querySelector('.initial-range');
+  initialRange.style.display = 'none';
   document.querySelector('.last-guess').innerText = "Your last guess was"
-  document.querySelector('.show-guess').innerText = changeToNum();
-}
-  if (changeToNum() < secretNum) {
-    document.querySelector('.result').innerText = "That is too low";
-  } else if (changeToNum() > secretNum) {
-    document.querySelector('.result').innerText = "That is too high";
-  } else if (changeToNum() === secretNum){
-    document.querySelector('.result').innerText = "Boom!".toUpperCase();
-    nextLevel();
+  document.querySelector('.show-guess').innerText = userNum();
   }
-  console.log(changeToNum(), secretNum);
+  userResult();
+
+  console.log(userNum(), secretNum);
 });
 
 //Clear Button Click Event
@@ -39,11 +37,18 @@ clearButton.addEventListener('click', function(){
 
 //Reset Button Click Event
 resetButton.addEventListener('click', function () {
-  getRandomNum();
-  document.getElementById('user-guess').value = "";
+  secretNum = getRandomNum();
+  guessInput.value = "";
   document.querySelector('.last-guess').innerText = "";
   document.querySelector('.show-guess').innerText = "";
   document.querySelector('.result').innerText = "";
+  document.querySelector('.new-range').innerText = "";
+  var initialRange = document.querySelector('.initial-range');
+  initialRange.style.display = 'block';
+  var hideMinMax = document.querySelector('.min-max-section');
+  hideMinMax.style.display = 'none';
+  maxInput.value = "";
+  minInput.value = "";
   disableButtons();
 })
 
@@ -56,14 +61,6 @@ guessInput.addEventListener('input', function() {
   }
 })
 
-//Show Level 2
-function nextLevel() {
-    document.querySelector('.level-2').innerText = "Ready for level 2?";
-    document.querySelector('.level-2-instructions').innerText = "Enter a new min and max, then guess again!"
-    var minMax =     document.querySelector('.min-max-section');
-    minMax.style.display = 'unset';
-}
-
 //Min and Max Input Event
 minInput.addEventListener('input', function() {
   if (minInput.value === "") {
@@ -75,14 +72,38 @@ minInput.addEventListener('input', function() {
   }
 })
 
+//Enter button event listener
 enterButton.addEventListener('click', function() {
   customRange();
   document.querySelector('.new-range').innerText = "Your new range is between " + newMin() + " and " + newMax() + "."
   document.querySelector('.level-2').innerText = "";
   document.querySelector('.level-2-instructions').innerText = "";
+  var displayGuess = document.querySelector('.display-guess');
+  displayGuess.style.display = 'none';
+  guessInput.value = "";
 })
 
 //FUNCTIONS
+
+//Guess Results
+function userResult() {
+  if (userNum() < secretNum) {
+    document.querySelector('.result').innerText = "That is too low";
+  } else if (userNum() > secretNum) {
+    document.querySelector('.result').innerText = "That is too high";
+  } else if (userNum() === secretNum){
+    document.querySelector('.result').innerText = "Boom!".toUpperCase();
+    nextLevel();
+  }
+}
+
+//Show Level 2
+function nextLevel() {
+    document.querySelector('.level-2').innerText = "Ready for level 2?";
+    document.querySelector('.level-2-instructions').innerText = "Enter a new min and max, then guess again!"
+    var minMax =     document.querySelector('.min-max-section');
+    minMax.style.display = 'unset';
+}
 
 //Disable buttons
 function disableButtons() {
@@ -108,7 +129,7 @@ function getRandomNum() {
 }
 
 //Convert User's Guess to a Number
- function changeToNum() {
+ function userNum() {
   var userNum = parseInt(guessInput.value);
   return userNum;
 }
@@ -116,18 +137,34 @@ function getRandomNum() {
 //CUSTOM RANGE FUNCTIONS
 
 //Generate New Range
+function compRange() {
+  secretNum = Math.floor(Math.random() * (rangeMax() - rangeMin() + 1) + rangeMin());
+}
+
 function customRange() {
   secretNum = Math.floor(Math.random() * (newMax() - newMin() + 1) + newMin());
 }
 
-//Convert Min to a Number
+//Convert User Min to a Number
 function newMin() {
   minNum = parseInt(minInput.value);
   return minNum;
 }
 
-//Convert Max to a Number
+//Convert User Max to a Number
 function newMax() {
   maxNum = parseInt(maxInput.value);
+  return maxNum;
+}
+
+//User Min -10
+function rangeMin() {
+  minNum = parseInt(minInput.value) - 10;
+  return minNum;
+}
+
+//User Max +10
+function rangeMax() {
+  maxNum = parseInt(maxInput.value) + 10;
   return maxNum;
 }
